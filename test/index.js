@@ -77,7 +77,16 @@ describe('checkout', () => {
         });
     });
 
+    describe('getAllItems', () => {
 
+        it('getAllItems() - should return correct array values', () => {
+            let checkoutObj = new shoppingBundleCheckout(priceRules);            
+            checkoutObj.scan('vga');
+            expect(checkoutObj.getAllItems().length).to.equal(1);
+            checkoutObj.scan('atv');
+            expect(checkoutObj.getAllItems().length).to.equal(2);
+        });
+    });
 
     describe('accAdd', () => {
 
