@@ -63,7 +63,15 @@ describe('checkout', () => {
             checkoutObj.scan('ipd');
             checkoutObj.scan('ipd');
               expect(checkoutObj.total()).to.equal(2718.95);
-            });
+        });
+
+        it('scan() - should return total price 0 when incorrect item code input', () => {
+            let checkoutObj = new shoppingBundleCheckout(priceRules);
+            checkoutObj.scan('atv1');
+            checkoutObj.scan('ipd2');
+            checkoutObj.scan('ipd3');
+            expect(checkoutObj.total()).to.equal(0);
+        });
 
     });
 
@@ -73,7 +81,7 @@ describe('checkout', () => {
             let checkoutObj = new shoppingBundleCheckout(priceRules);            
             checkoutObj.scan('vga');
             checkoutObj.reset();
-            expect(checkoutObj.totalPrice).to.equal(0);            
+            expect(checkoutObj.totalPrice).to.equal(0);                    
         });
     });
 
